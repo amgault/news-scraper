@@ -1,0 +1,122 @@
+body, html{
+    min-height: 100%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron{
+    padding-top: 0px;
+    min-height: 200px;
+    background: transparent url('../images/chip.jpg') scroll 0 0 no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+   /* color: #E2E8CE;*/
+    color: white;
+}
+
+.jumbotron h1 {
+    font-size: 75px;
+    padding-top: 20px;
+    margin-top: 0px;
+}
+
+.jumbotron button {
+    margin: 15px;
+    color: white;
+    background-color: purple;
+    font-weight: bold;
+} 
+
+.jumbotron button:hover{
+    background-color: white;
+    color: purple;
+}
+
+.jumbotron button:focus{
+    outline: 0;
+    background-color: white;
+    color: purple;
+}
+
+
+.content{
+    margin-top: 260px;
+}
+
+.panel-primary{
+    border-color: purple;
+}
+
+.panel-primary>.panel-heading {
+    color: white;
+    background-color: purple;
+    
+}
+
+.panel-body{
+    /*background-color: #F8EDD9;*/
+    background-color: white;
+    color: purple;
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: white;
+}
+
+.panel-heading .btn{
+    float: right;
+    color: purple;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.panel-heading .btn{
+    background-color: white;
+    color: purple;
+}
+
+#articlesadded{
+    font-size: 30px;
+}
+
+#articlesadded .modal-header{
+    min-height: 100px;
+}
+
+.modal-content{
+    background-color: white;
+}
+
+#note-text{
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+#save-note{
+    margin-bottom: 10px;
+    color: white;
+    background-color: purple;
+}
+
+.list-group-item .btn{
+    float: right;
+    line-height: 1;
+    padding: 4px 6px;
+}
+
+.list-group-item{
+    margin: 5px;
+}
+
+
