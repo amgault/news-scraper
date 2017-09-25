@@ -27,8 +27,8 @@ body{
 
 .jumbotron button {
     margin: 15px;
-    color: white;
-    background-color: purple;
+    color: purple;
+    background-color: white;
     font-weight: bold;
 } 
 
