@@ -8,40 +8,45 @@ module.exports = function(app, db){
 
     app.post('/scrape',function(req, res){
         console.log("in scrape")
-        var articles = 0, counter = 0;
-        //Article.find({saved: false}).remove().exec()
-        request("https://arstechnica.com/", function(error, response, html){
-            var $ = cheerio.load(html)
-            var elements = $("article header").nextAll()
-            var counter = elements.length
-            console.log("cheerio"+counter)
-            $("article header").each(function(i, element){
-                var item = {}
+        
+        request("http://www.reuters.com/news/archive/technologyNews?view=page", function(error, response, html){
+            var $ = cheerio.load(html);
+            var elements = $(".news-headline-list").children();
+            var articlesArr = Object.values(elements);
+            var articles = 0, counter = 10;
+            console.log(articlesArr.length);
+            
+            //console.log("cheerio"+elements.length)
+            for(var i=0; i<10; i++){
+                var title = $(articlesArr[i]).find(".story-content a h3").text().trim();
+                console.log("title: " +title);
+                var text = $(articlesArr[i]).find(".story-content p").text().trim();
 
-                item.title = $(element).find("h2 a").text()
-                item.link = $(element).find("h2 a").attr("href")
-                item.excerpt = $(element).find(".excerpt").text()
-                var newArticle = new Article(item)
+                var item = {};
+                item.title = $(articlesArr[i]).find(".story-content a h3").text().trim();
+                item.link = $(articlesArr[i]).find(".story-content a").attr("href");
+                item.excerpt = $(articlesArr[i]).find(".story-content p").text().trim();
+                var newArticle = new Article(item);
                 newArticle.save(function(err, data){
                     if(err){
-                        //console.log(err)
-                        counter--
+                        console.log(err);
+                        counter--;
                     }
                     else{
-                        articles++
+                        articles++;
                     }
                     if(articles===counter-1){
-                        console.log("article", articles)
+                        console.log("article", articles);
                         if(articles>0){
-                            res.send(articles + "articles added")
+                            res.send(articles + "articles added");
                         }
                         else{
-                            res.send("no new article")
+                            res.send("no new article");
                         }
-                        
                     }    
                 })
-            })
+            }
+            
         })
     })
 
