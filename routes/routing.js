@@ -12,6 +12,7 @@ module.exports = function(app, db){
         request("http://www.reuters.com/news/archive/technologyNews?view=page", function(error, response, html){
             var $ = cheerio.load(html);
             var elements = $(".news-headline-list").children();
+            console.log(typeof elements);
             var articlesArr = Object.values(elements);
             var articles = 0, counter = 10;
             console.log(articlesArr.length);
